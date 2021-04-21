@@ -42,7 +42,7 @@ const WebinarDeatilPage = () => {
     const fetchWebinars = async () => {
       try {
         const responseData = await sendRequest(
-          REACT_APP_BACKEND_URL + `/webinars/${wid}`
+          process.env.REACT_APP_BACKEND_URL + `/webinars/${wid}`
         );
         setLoadedWebinars(responseData.webinar);
       } catch (err) {}

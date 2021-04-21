@@ -45,7 +45,7 @@ const UpdateWebinar = () => {
     const fetchWebinar = async () => {
       try {
         const responseData = await sendRequest(
-          REACT_APP_BACKEND_URL + `/webinars/${wid}`
+          process.env.REACT_APP_BACKEND_URL + `/webinars/${wid}`
         );
         setLoadedWebinar(responseData.webinar);
         setFormData(
@@ -70,7 +70,7 @@ const UpdateWebinar = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        REACT_APP_BACKEND_URL + `/webinars/${wid}`,
+        process.env.REACT_APP_BACKEND_URL + `/webinars/${wid}`,
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
@@ -93,7 +93,7 @@ const UpdateWebinar = () => {
       formData.append("replay", formState.inputs.replay.value);
 
       await sendRequest(
-        REACT_APP_BACKEND_URL + `/webinars/replay/${wid}`,
+        process.env.REACT_APP_BACKEND_URL + `/webinars/replay/${wid}`,
         "PATCH",
         formData,
         {

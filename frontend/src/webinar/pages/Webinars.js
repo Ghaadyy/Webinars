@@ -13,7 +13,7 @@ const Webinars = () => {
     const fetchWebinars = async () => {
       try {
         const responseData = await sendRequest(
-          REACT_APP_BACKEND_URL + "/webinars/browse"
+          process.env.REACT_APP_BACKEND_URL + "/webinars/browse"
         );
         setLoadedWebinars(responseData.webinars);
         console.log(responseData.webinars);

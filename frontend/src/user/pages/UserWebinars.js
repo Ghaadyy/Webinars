@@ -16,7 +16,7 @@ const UserWebinars = () => {
     const fetchWebinars = async () => {
       try {
         const responseData = await sendRequest(
-          REACT_APP_BACKEND_URL + `/webinars/user/${userId}`
+          process.env.REACT_APP_BACKEND_URL + `/webinars/user/${userId}`
         );
         setLoadedWebinars(responseData.webinars);
       } catch (err) {}

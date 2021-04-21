@@ -42,7 +42,7 @@ const UpdateProfile = () => {
     const fetchUser = async () => {
       try {
         const responseData = await sendRequest(
-          REACT_APP_BACKEND_URL + "/users/"
+          process.env.REACT_APP_BACKEND_URL + "/users/"
         );
         setLoadedUser(responseData.user);
         setFormData(
@@ -71,7 +71,7 @@ const UpdateProfile = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        REACT_APP_BACKEND_URL + "/users/",
+        process.env.REACT_APP_BACKEND_URL + "/users/",
         "PATCH",
         JSON.stringify({
           id: auth.userId,

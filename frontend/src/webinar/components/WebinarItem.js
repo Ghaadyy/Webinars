@@ -47,7 +47,7 @@ const WebinarItem = (props) => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
-        REACT_APP_BACKEND_URL + `/webinars/${props.id}`,
+        process.env.REACT_APP_BACKEND_URL + `/webinars/${props.id}`,
         "DELETE",
         null,
         {

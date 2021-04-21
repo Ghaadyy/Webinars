@@ -62,9 +62,14 @@ const AddWebinar = () => {
       formData.append("image", formState.inputs.image.value);
       formData.append("date", date);
 
-      await sendRequest(REACT_APP_BACKEND_URL + "/webinars", "POST", formData, {
-        Authorization: "Bearer " + auth.token,
-      });
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL + "/webinars",
+        "POST",
+        formData,
+        {
+          Authorization: "Bearer " + auth.token,
+        }
+      );
       history.push("/browse");
     } catch (err) {}
   };
