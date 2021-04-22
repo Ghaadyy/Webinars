@@ -17,7 +17,10 @@ const WebinarDeatilPage = () => {
   let description = loadedWebinars?.description;
   let category = loadedWebinars?.category;
   let date = loadedWebinars?.date;
-  let video = `${process.env.REACT_APP_ASSET_URL}/${loadedWebinars?.replay}`;
+  let video;
+  loadedWebinars?.replay === ""
+    ? (video = "")
+    : (video = `${process.env.REACT_APP_ASSET_URL}/${loadedWebinars?.replay}`);
   let image = `${process.env.REACT_APP_ASSET_URL}/${loadedWebinars?.image}`;
 
   const d = new Date(date);
@@ -73,7 +76,7 @@ const WebinarDeatilPage = () => {
           <h1>{title + " // " + webinarDateFormatted}</h1>
           <h2>{description}</h2>
           <div className="video__container">
-            <VideoPlayer src={video} />
+            {video !== "" ? <VideoPlayer src={video} /> : null}
           </div>
         </div>
       )}
