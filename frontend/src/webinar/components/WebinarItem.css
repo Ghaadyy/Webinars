@@ -17,6 +17,11 @@
 
 .webinar-img-responsive {
   width: 100%;
+  transition: transform 0.2s;
+}
+
+.webinar-img-responsive:hover {
+  transform: scale(1.1);
 }
 
 .webinar-item > a {
