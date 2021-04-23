@@ -42,7 +42,7 @@ const UpdateProfile = () => {
     const fetchUser = async () => {
       try {
         const responseData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + "/users/"
+          process.env.REACT_APP_BACKEND_URL + "/users/" + auth.userId
         );
         setLoadedUser(responseData.user);
         setFormData(
@@ -65,7 +65,7 @@ const UpdateProfile = () => {
       } catch (err) {}
     };
     fetchUser();
-  }, [sendRequest, setFormData]);
+  }, [sendRequest, setFormData, auth.token, auth.userId]);
 
   const userUpdateSubmitHandler = async (event) => {
     event.preventDefault();
@@ -120,7 +120,7 @@ const UpdateProfile = () => {
               validators={[VALIDATOR_REQUIRE()]}
               errorText="Please enter a valid name."
               onInput={inputHandler}
-              initialValue={loadedUser[0].name}
+              initialValue={loadedUser.name}
               initialValid={true}
             />
             <Input

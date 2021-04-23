@@ -1,7 +1,9 @@
-.main__container {
-  text-align: left;
-}
-
-.main-title {
+.main {
   margin: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
 }

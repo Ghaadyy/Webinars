@@ -7,7 +7,7 @@ const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
-router.get("/", usersController.getUser);
+router.get("/:uid", usersController.getUser);
 
 router.post(
   "/signup",

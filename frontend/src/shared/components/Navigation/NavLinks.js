@@ -9,11 +9,11 @@ const NavLinks = () => {
 
   return (
     <ul className="nav-links">
-      <li>
+      {/* <li>
         <NavLink to="/" exact>
           HOME
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/browse" exact>
           BROWSE

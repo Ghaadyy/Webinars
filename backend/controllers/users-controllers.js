@@ -6,9 +6,17 @@ const HttpError = require("../models/http-error");
 const User = require("../models/user");
 
 const getUser = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return next(
+      new HttpError("Invalid inputs passed, please check your data.", 422)
+    );
+  }
+
   let user;
+
   try {
-    user = await User.find({}, "-password");
+    user = await User.findOne({ _id: req.params.uid });
   } catch (err) {
     const error = new HttpError(
       "Fetching user failed, please try again later.",
@@ -17,7 +25,7 @@ const getUser = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ user: user.map((user) => user.toObject({ getters: true })) });
+  res.status(200).json({ user: user.toObject({ getters: true }) });
 };
 
 const updateUser = async (req, res, next) => {

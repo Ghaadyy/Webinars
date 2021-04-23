@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Webinars from "./webinar/pages/Webinars";
-import Homepage from "./shared/pages/Homepage";
+// import Homepage from "./shared/pages/Homepage";
 import WebinarDeatilPage from "./webinar/pages/WebinarDetailPage";
 import { AuthContext } from "./shared/context/auth-context";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
@@ -26,9 +26,9 @@ const App = () => {
   if (token) {
     routes = (
       <Switch>
-        <Route path="/" exact>
+        {/* <Route path="/" exact>
           <Homepage />
-        </Route>
+        </Route> */}
         <Route path="/browse" exact>
           <Webinars />
         </Route>
@@ -47,15 +47,15 @@ const App = () => {
         <Route path="/webinars/:wid" excat>
           <WebinarDeatilPage />
         </Route>
-        <Redirect to="/" />
+        <Redirect to="/browse" />
       </Switch>
     );
   } else {
     routes = (
       <Switch>
-        <Route path="/" exact>
+        {/* <Route path="/" exact>
           <Homepage />
-        </Route>
+        </Route> */}
         <Route path="/browse" exact>
           <Webinars />
         </Route>
@@ -65,7 +65,7 @@ const App = () => {
         <Route path="/auth" exact>
           <Auth />
         </Route>
-        <Redirect to="/auth" />
+        <Redirect to="/browse" />
       </Switch>
     );
   }
