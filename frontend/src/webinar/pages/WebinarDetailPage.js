@@ -21,7 +21,9 @@ const WebinarDeatilPage = () => {
   loadedWebinars?.replay === ""
     ? (video = "")
     : (video = `${process.env.REACT_APP_ASSET_URL}/${loadedWebinars?.replay}`);
-  let image = `${process.env.REACT_APP_ASSET_URL}/${loadedWebinars?.image}`;
+  let image = `${process.env.REACT_APP_ASSET_URL}/${loadedWebinars?.image}`
+    .replace("\\", "/")
+    .replace("\\", "/");
 
   const d = new Date(date);
   const monthNames = [
@@ -63,20 +65,29 @@ const WebinarDeatilPage = () => {
       )}
       {!isLoading && loadedWebinars && (
         <div className="webinar-detail">
-          <div className="webinar-detail__img">
-            <img
-              className="webinar-detail__img__responsive"
-              src={image}
-              alt={title}
-            />
-          </div>
-          <div className="webinar-category">
-            <p>{category}</p>
-          </div>
-          <h1>{title + " // " + webinarDateFormatted}</h1>
-          <h2>{description}</h2>
-          <div className="video__container">
-            {video !== "" ? <VideoPlayer src={video} /> : null}
+          <div className="webinar-detail__container">
+            <div className="webinar-detail__detail">
+              <div className="webinar-category">
+                <p>{category}</p>
+              </div>
+              <h1>{title + " // " + webinarDateFormatted}</h1>
+              <h2>{description}</h2>
+            </div>
+            <div className="webinar-detail__thumbnail">
+              <div className="video__container">
+                {video !== "" ? (
+                  <VideoPlayer src={video} poster={image} />
+                ) : (
+                  <div className="webinar-detail__img">
+                    <img
+                      className="webinar-detail__img__responsive"
+                      src={image}
+                      alt={title}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -85,3 +96,6 @@ const WebinarDeatilPage = () => {
 };
 
 export default WebinarDeatilPage;
+{
+  /* <img className="webinar-detail__img__responsive" src={image} alt={title} />; */
+}
