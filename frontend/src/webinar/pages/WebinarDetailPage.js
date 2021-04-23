@@ -96,6 +96,3 @@ const WebinarDeatilPage = () => {
 };
 
 export default WebinarDeatilPage;
-{
-  /* <img className="webinar-detail__img__responsive" src={image} alt={title} />; */
-}
